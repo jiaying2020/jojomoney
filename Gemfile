@@ -13,6 +13,18 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
+
+gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'devise-i18n', '~> 1.9', '>= 1.9.2'
+gem 'omniauth-facebook', '~> 8.0'
+gem 'carrierwave', '~> 2.1'
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+gem 'rails_admin-i18n', '~> 1.16'
+gem 'whenever', '~> 1.0'
+gem 'sunspot_rails', '~> 2.5'
+gem 'sunspot_solr', '~> 2.5'
+
+
 group :development, :test do
 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
