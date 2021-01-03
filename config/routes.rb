@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     # omniauth_callbacks: "users/omniauth_callbacks",
     unlocks: 'users/unlocks'
   }
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   
   root to: "home#index"
 
