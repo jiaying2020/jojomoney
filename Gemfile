@@ -26,9 +26,12 @@ gem 'sunspot_solr', '~> 2.5'
 
 #foreman裝舊版本會衝突，要版本0.87.2才不會衝到
 gem 'foreman', '~> 0.87.2'
-
+#雙開複數server
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+#後台系統
+
+gem 'carrierwave', '~> 2.1'
 
 gem "letter_opener", :group => :development
 
