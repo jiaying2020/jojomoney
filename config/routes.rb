@@ -16,4 +16,24 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
+
+  resources :categories, only: [:show] do
+  end
+
+  resources :projects, only: [:show] do
+  end
+  
+  resources :pledges, only: [:create] do
+  end
+  
+  resources :payments do
+    collection do
+      get :mpg
+      get :canceled
+      post :notify
+      post :paid
+      post :not_paid_yet
+    end
+  end
+  
 end
