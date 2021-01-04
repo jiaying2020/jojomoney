@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :confirmable
 
   validates :name, presence: true
+  # mount_uploader :avator, CoverImageUploader
+
+  has_many :pledges
+  has_one :project_owner
          
          #,:omniauthable :trackable, 
 end
