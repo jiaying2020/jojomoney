@@ -24,6 +24,9 @@ gem 'whenever', '~> 1.0'
 gem 'sunspot_rails', '~> 2.5'
 gem 'sunspot_solr', '~> 2.5'
 
+#以下裝開始會衝突，要注意，要這個版本才不會衝到
+gem 'foreman', '~> 0.87.2'
+
 gem "letter_opener", :group => :development
 
 

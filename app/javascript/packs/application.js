@@ -13,9 +13,10 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
-
-import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createPopper } from '@popperjs/core';
+
 
 import $ from 'jquery';
 window.$ = $;

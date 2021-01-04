@@ -3,6 +3,14 @@
   <head>
     <title>JOJOmoney</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="description" content="這是Jocelyn‘s 人生開發日誌的專案展示，僅供測試與學習使用" />
+    <meta name="keywords" content="Ruby On Rails, Bootstrap, 網站, 開發, 程式, 設計, jquery, HTML5, CSS, JavaScript">
+    <meta name="copyright" content="Jocelyn‘s 人生開發日誌">
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <meta name="reply-to" content="biheyeblue@gmail.com">
+
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,11 +24,11 @@
 
   <body>
   <div class="container">
-    <%= link_to '登入', user_session_path%>
-    <%= link_to '登出', destroy_user_session_path, method: :delete %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/nav'%>
+    <%= render 'layouts/notice'%>
+  
     <%= yield %>
+      <%= render 'layouts/footer'%>
 
   </div>
   </body>
