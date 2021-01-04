@@ -15,9 +15,9 @@ class Pledge < ApplicationRecord
     private
     
     def is_user_project_owner?
-      if project_support.project.project_owner.user == user
-        errors.add(:user, "不可以投資自己的專案")
-      end
-
+        if project_support.project.project_owner.user == user
+            errors.add(:user, "不可以投資自己的專案")
+        end
+    end
 
 end
