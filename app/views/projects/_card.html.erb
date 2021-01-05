@@ -2,7 +2,7 @@
 <%=link_to project_path(project) do %>
     <div class="card" style="width: 18rem;">
         <%# <img src="..." class="card-img-top" alt="..."> %>
-        <% image_tag project.cover_image, class: "card-img-top"%>
+        <%=image_tag project.cover_image.url, class: "card-img-top"%>
         <%# 引入圖片 %>
         <div class="card-body">
             <h5 class="card-title"><%=project.name%></h5>
