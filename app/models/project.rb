@@ -24,6 +24,17 @@ class Project < ApplicationRecord
       due_date.to_i - Time.now.to_i
     end
 
+    # def paid_pledges_amounts  
+    #   return paid_pledges.inject(0) do |sum, pledge|
+    #     sum += pledge.support_price * pledge.quantity
+    #   end
+    # end
+
+    # def percentage_of_reaching_goal
+    #   paid_pledges_amounts.to_f / goal.to_f
+    # end
+
+
     private
     
     def valid_due_date?

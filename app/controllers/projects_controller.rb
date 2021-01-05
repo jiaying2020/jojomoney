@@ -2,8 +2,9 @@ class ProjectsController < ApplicationController
     before_action :get_project, except: [:index]
     
     def show
-      @due_date = @project.due_date
-      @project_supports = @project.project_supports
+        @due_date = @project.due_date
+        @project_supports = @project.project_supports
+        # @percentage = (@project.percentage_of_reaching_goal * 100).round(2)
      
     end
     
