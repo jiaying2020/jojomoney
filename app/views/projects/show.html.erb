@@ -14,13 +14,11 @@
               <%= @project.name %>
             </h5>
             <div class="card-text">
-              <p><b>已募得金額</b></p>
 
-              <h5>贊助目標: NT$ <%= @project.goal%></h5>
-              <br/>
+            <h5>贊助目標: NT$ <%= @project.goal%></h5>
               <p style="color: red;" class="seconds_countdown" data-seconds="<%= @project.seconds_left %>">  
               </p>
-
+               <p>已經有<%=@project.pledges.count%>人贊助</p>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: <%= "#{@percentage}%" %>;" aria-valuenow="<%= @percentage %>" aria-valuemin="0" aria-valuemax="100">
                   <% unless @percentage == 0.0 %>
@@ -38,3 +36,91 @@
   </div>
  
 </div>
+
+<div style="margin: 32px auto;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8">
+        </div>
+        <div class="col-12 col-md-4">
+          <% @project_supports.each do |project_support| %>
+            <section>
+              <%= form_tag pledges_path, method: :post do %>
+              <h3><%= project_support.name %></h3>
+              <h5>NT$ <%= project_support.price%> / 每單位</h5>
+              <div>
+                <%= project_support.description %>
+              </div>
+              <input type="hidden" name="id" value="<%= project_support.id %>">
+              <div class="form-group">
+                <label for="quantity">贊助數量</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1 ~ 10" max="10" min="1" value="1">
+              </div>
+              <div class="clearfix">
+                <button type="submit" class="btn btn-info float-right">
+                  贊助
+                </button>
+              </div>
+              <% end %>
+              <hr/>
+            </section>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+// TODO 要打包
+
+$(function(){
+    countdown();
+    setInterval("countdown()", 1000);
+  })
+//   這個function每秒執行1次
+
+    function countdown(){
+    $('.seconds_countdown').each(function(){
+      var newSeconds = parseInt($(this).data('seconds')) - 1;
+      $(this).data('seconds', newSeconds);
+      if (newSeconds <= 0){
+        $(this).html("募資已經結束");
+      }else{
+        var daysLeft = secondsToDaysLeft(newSeconds);
+        $(this).html("將於 " + daysLeft + " 後結束");
+      }
+    })
+  }
+  
+  function secondsToDaysLeft(number) {
+      number = Number(number);
+      var day = Math.floor(number / 3600 / 24);
+      var hour = Math.floor(number / 3600 % 24);
+      var mimutes = Math.floor(number % 3600 / 60);
+      var seconds = Math.floor(number % 3600 % 60);
+  
+      var dDisplay = day == 0 ? "" : day + "天 ";
+      var hDisplay = (day == 0 && hour == 0) ? "" : hour + "小時 ";
+      var mDisplay = (day == 0 && hour == 0 && mimutes == 0) ? "" : mimutes + "分 ";
+      var sDisplay = seconds + "秒 ";
+      return dDisplay + hDisplay + mDisplay + sDisplay; 
+  }
+
+  </script>
+
+<%# // parseInt() 函数可解析一个字符串，并返回一个整数。
+// Math.floor() 函式會回傳小於等於所給數字的最大整數。
+
+// 1日=24時=1440分=86400秒 %>
+
+
+
+
+
+
+
+<%# https://getbootstrap.com/docs/5.0/components/card/ %>
