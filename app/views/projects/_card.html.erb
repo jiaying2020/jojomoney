@@ -6,7 +6,14 @@
         <%# 引入圖片 %>
         <div class="card-body">
             <h5 class="card-title"><%=project.name%></h5>
-            <p class="card-text"><%=project.brief%></p>
+            <p class="card-text">
+            <p><%=project.brief%></p>
+            <p><%=project.due_date%></p>
+            <p><%=project.pledges.count%></p>
+            
+            </p>
+
+           
             <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
         </div>
     </div>

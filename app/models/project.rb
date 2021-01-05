@@ -4,6 +4,8 @@ class Project < ApplicationRecord
     belongs_to :category
     
     has_many :project_supports
+    has_many :pledges, through: :project_supports
+    # 這裡是重點，透過project_supports去抓贊助
     
     enum status: [:is_hidden, :is_published ,:succeeded, :failed, :cancel]
     
