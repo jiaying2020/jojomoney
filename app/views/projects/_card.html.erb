@@ -11,6 +11,14 @@
 
                 <p style="color: red;" class="seconds_countdown" data-seconds="<%= project.seconds_left %>">  
                 </p>
+
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: <%= "#{@percentage}%" %>;" aria-valuenow="<%= @percentage %>" aria-valuemin="0" aria-valuemax="100">
+                    <% unless @percentage == 0.0 %>
+                      <%= "#{@percentage}%" %> 
+                    <% end %>
+                  </div>
+              </div>
                 <%# TODO %>
                 <p>已經有<%=project.pledges.count%>人贊助</p>
             </p>

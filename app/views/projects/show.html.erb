@@ -7,6 +7,7 @@
           <iframe class="embed-responsive-item" src="<%= @project.ad_url%>"></iframe>
         </div>
       </div>
+      <%# TODO差贊助統計 %>
       <div class="col-12 col-md-4">
         <div class="card" style="width: 100%;">
           <div class="card-body">
@@ -46,21 +47,21 @@
           <% @project_supports.each do |project_support| %>
             <section>
               <%= form_tag pledges_path, method: :post do %>
-              <h3><%= project_support.name %></h3>
-              <h5>NT$ <%= project_support.price%> / 每單位</h5>
-              <div>
-                <%= project_support.description %>
-              </div>
-              <input type="hidden" name="id" value="<%= project_support.id %>">
-              <div class="form-group">
-                <label for="quantity">贊助數量</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1 ~ 10" max="10" min="1" value="1">
-              </div>
-              <div class="clearfix">
-                <button type="submit" class="btn btn-info float-right">
-                  贊助
-                </button>
-              </div>
+                <h3><%= project_support.name %></h3>
+                <h5>NT$ <%= project_support.price%> / 每單位</h5>
+                <div>
+                  <%= project_support.description %>
+                </div>
+                <input type="hidden" name="id" value="<%= project_support.id %>">
+                <div class="form-group">
+                  <label for="quantity">贊助數量</label>
+                  <input type="number" class="form-control" id="quantity" name="quantity" placeholder="1 ~ 10" max="10" min="1" value="1">
+                </div>
+                <div class="clearfix">
+                  <button type="submit" class="btn btn-info float-right">
+                    贊助
+                  </button>
+                </div>
               <% end %>
               <hr/>
             </section>
