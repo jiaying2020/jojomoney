@@ -9,7 +9,10 @@ class Project < ApplicationRecord
     
     enum status: [:is_hidden, :is_published ,:succeeded, :failed, :cancel]
     
-    scope :is_now_on_sale, -> {self.is_published.where('due_date > ?', Time.now)}
+    scope :is_now_on_sale, -> {self.is_published.where(status:[:is_published,:succeeded]).where('due_date > ?', Time.now)}
+    scope :succeeded_and_done, ->{self.succeeded.where('due_date < ?', Time.now)}
+    scope :past_projects, -> {self.where.not(status: [:cancel,:is_hidden]).where('due_date > ?', Time.now)}
+
     
     mount_uploader :cover_image, CoverImageUploader
     
@@ -17,11 +20,14 @@ class Project < ApplicationRecord
     validates_numericality_of :goal, greater_than: 0
     validate :valid_due_date?
     
-    
+    def seconds_left
+      due_date.to_i - Time.now.to_i
+    end
+
     private
     
     def valid_due_date?
-      if due_date.blank? || due_date < ((created_at || Time.zone.now) + 7.days)
+      if due_date.blank? || due_date < ((created_at || Time.zone.now))
         errors.add(:due_date, "due_date is not correct")
       end
     end
