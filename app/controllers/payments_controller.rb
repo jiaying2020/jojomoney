@@ -32,7 +32,7 @@ class PaymentsController < ApplicationController
       @tradeSha = Digest::SHA256.hexdigest(checkValue).upcase
       @version = version
       # TODO
-      # @pledge.update(merchantOrderNo: merchantOrderNo)
+      @pledge.update(merchantOrderNo: merchantOrderNo)
     end
       
     def paid
@@ -96,7 +96,9 @@ class PaymentsController < ApplicationController
               # pledge 改成已付款，Model裡面有override
               pledge.paid!
               
-              redirect_to pledge_path(pledge)
+              flash[:alert] = "付款成功"
+              redirect_to root_path
+              # redirect_to pledges_path(pledge)
               return
           end
         end

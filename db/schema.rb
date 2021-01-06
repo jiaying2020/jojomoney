@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_055537) do
+ActiveRecord::Schema.define(version: 2021_01_06_002434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_055537) do
     t.string "inst_each"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "merchantOrderNo"
     t.index ["pledge_id"], name: "index_payments_on_pledge_id"
   end
 
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_055537) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "merchantOrderNo"
     t.index ["project_support_id"], name: "index_pledges_on_project_support_id"
     t.index ["user_id"], name: "index_pledges_on_user_id"
   end
