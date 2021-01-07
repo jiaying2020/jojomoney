@@ -8,6 +8,10 @@ class Project < ApplicationRecord
     # 這裡是重點，透過project_supports去抓贊助
     
     enum status: [:is_hidden, :is_published ,:succeeded, :failed, :cancel]
+    #project有五個狀態:
+    # is_hidden (未上架);is_published(已上架);succeeded(達標);failed(失敗);cancel(取消)
+
+
     
     scope :is_now_on_sale, -> {self.where(status:[:is_published,:succeeded]).where('due_date > ?', Time.now)}
     scope :succeeded_and_done, -> {self.succeeded.where('due_date < ?', Time.now)}
