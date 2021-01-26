@@ -199,7 +199,7 @@ class PaymentsController < ApplicationController
             merchantOrderNo = result["MerchantOrderNo"]
             
             #利用訂單編號找出 pledge，以建立付款但未付款的情況，pledge為not_paid
-            pledge = Pledge.not_paid.find_by(merchantOrderNo: merchantOrderNo)
+            pledge = Pledge.not_selected_yet.find_by(merchantOrderNo: merchantOrderNo)
             if pledge 
               # 只讓特定非即時付款方式狀態變化，避免二次執行
               if result["PaymentType"] == "CVS"

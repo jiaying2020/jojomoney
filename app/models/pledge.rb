@@ -19,7 +19,6 @@ class Pledge < ApplicationRecord
     def paid!
       self.issue_date = Time.now
       super
-      
       # project.update_status_if_reaching_goal!
     end
     
